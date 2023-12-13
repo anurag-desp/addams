@@ -1,0 +1,48 @@
+blinker==1.7.0
+Brotli @ file:///tmp/abs_ecyw11_7ze/croots/recipe/brotli-split_1659616059936/work
+certifi @ file:///croot/certifi_1700501669400/work/certifi
+cffi @ file:///croot/cffi_1700254295673/work
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+click @ file:///croot/click_1698129812380/work
+cryptography @ file:///croot/cryptography_1694444244250/work
+filelock @ file:///croot/filelock_1700591183607/work
+Flask==3.0.0
+Flask-SQLAlchemy==3.1.1
+fsspec @ file:///croot/fsspec_1701286474621/work
+gmpy2 @ file:///tmp/build/80754af9/gmpy2_1645455533097/work
+greenlet==3.0.2
+huggingface-hub==0.19.4
+idna @ file:///croot/idna_1666125576474/work
+itsdangerous==2.1.2
+Jinja2 @ file:///croot/jinja2_1666908132255/work
+joblib @ file:///croot/joblib_1685113087166/work
+MarkupSafe @ file:///opt/conda/conda-bld/markupsafe_1654597864307/work
+mkl-fft @ file:///croot/mkl_fft_1695058164594/work
+mkl-random @ file:///croot/mkl_random_1695059800811/work
+mkl-service==2.4.0
+mpmath @ file:///croot/mpmath_1690848262763/work
+networkx @ file:///croot/networkx_1690561992265/work
+numpy @ file:///croot/numpy_and_numpy_base_1701295038894/work/dist/numpy-1.26.2-cp310-cp310-linux_x86_64.whl#sha256=2ab675fa590076aa37cc29d18231416c01ea433c0e93be0da3cfd734170cfc6f
+packaging @ file:///croot/packaging_1693575174725/work
+Pillow @ file:///croot/pillow_1696580024257/work
+protobuf==3.20.3
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+pyOpenSSL @ file:///croot/pyopenssl_1690223430423/work
+PySocks @ file:///home/builder/ci_310/pysocks_1640793678128/work
+PyYAML @ file:///croot/pyyaml_1698096049011/work
+regex @ file:///croot/regex_1696515298636/work
+requests @ file:///croot/requests_1690400202158/work
+sacremoses==0.0.43
+safetensors @ file:///croot/safetensors_1697478848712/work
+six @ file:///tmp/build/80754af9/six_1644875935023/work
+SQLAlchemy==2.0.23
+sympy @ file:///croot/sympy_1701397643339/work
+tokenizers @ file:///opt/conda/conda-bld/tokenizers_1651822590771/work
+torch==2.1.1
+torchaudio==2.1.1
+torchvision==0.16.1
+tqdm @ file:///croot/tqdm_1679561862951/work
+transformers==4.33.3
+typing_extensions @ file:///croot/typing_extensions_1690297465030/work
+urllib3 @ file:///croot/urllib3_1698257533958/work
+Werkzeug==3.0.1
