@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>graphical analysis</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/graphs.css') }}">
+        <!-- <link rel="stylesheet" href="../static/css/graph.css"> -->
+    </head>
+
+    <body>
+        <div class="graphs">
+            <img src="{{ url_for('static', filename='img/pie_chart.gif') }}"        id="pie-chart" >
+            <img src="{{ url_for('static', filename='img/day_wise_graph.gif') }}"   id="day-wise"  >
+            <img src="{{ url_for('static', filename='img/six_months_graph.gif') }}" id="six-months">
+        </div>
+        <div id="advanced-analytics">Advanced Analytics</div>
+    </body>
+</html>

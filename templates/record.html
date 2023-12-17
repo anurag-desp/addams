@@ -1,0 +1,61 @@
+{% extends "record_layout.html" %}
+{% block body %}
+
+
+    <!-- <div class="jumbotron">
+        <div class="container">
+            <h1>
+                <box-icon type='solid' name='music'></box-icon>
+                Audio GUI
+            </h1>
+        </div>
+    </div> -->
+    <script src="{{ url_for('static', filename='js/recorder.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/audiodisplay.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    
+    <div class="container">
+        <canvas id="analyser"></canvas>
+        <p id="rec-btns">
+            <button id="init" class="btn btn-info" onclick="unpause()" onmouseover="changeColor('init')" onmouseout="changeColor('initIcon')"><img src="{{ url_for('static', filename='img/wave_sound.png') }}"/></button>
+            <button id="start" class="btn btn-success" onclick="startRecording()" onmouseover="changeColor('start')" onmouseout="changeColor('startIcon')" disabled><img src="{{ url_for('static', filename='img/speaking.png') }}"/></button>
+            <button id="stop" class="btn btn-danger" onclick="stopRecording()" onmouseover="changeColor('stop')" onmouseout="changeColor('stopIcon')" disabled><img src="{{ url_for('static', filename='img/stop_button.png') }}"/></button>
+        </p>
+        <script>
+            function changeColor(btn) {
+                if (btn === 'init') {
+                    const initListening = document.getElementById('init');
+                    initListening.innerText = "Start Listening";
+                } else if (btn === 'start') {
+                    const startConversation = document.getElementById('start');
+                    startConversation.innerText = "Start Conversation";
+                } else if (btn === 'stop') {
+                    const stopConversation = document.getElementById('stop');
+                    stopConversation.innerHTML = "Stop Button";
+                } else if (btn === 'initIcon') {
+                    const initListening = document.getElementById('init');
+                    initListening.innerHTML = "<img src=\"{{ url_for('static', filename='img/wave_sound.png') }}\"/>";
+                } else if (btn === 'startIcon') {
+                    const startConversation = document.getElementById('start');
+                    startConversation.innerHTML = "<img src=\"{{ url_for('static', filename='img/speaking.png') }}\"/>";
+                } else {
+                    const stopConversation = document.getElementById('stop');
+                    stopConversation.innerHTML = "<img src=\"{{ url_for('static', filename='img/stop_button.png') }}\">";
+                }
+            }
+        </script>
+
+    </div>
+    
+    
+    <table class="sentiment-analysis" id="analysis-result">
+        <!-- <tr>
+            <th>Transcription</th>
+            <th>Sentiment</th>
+        </tr> -->
+    </table>
+
+    <div id="sentiment-summary">
+    </div>
+    <!-- <script src="{{ url_for('static', filename='js/classify.js') }}"></script> -->
+{% endblock %}

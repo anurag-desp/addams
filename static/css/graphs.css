@@ -1,0 +1,74 @@
+body {
+    font-family: sans-serif;
+    background-color: #ededed;
+}
+
+.graphs {
+    /* border: 3px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    height: 1000px;
+
+    /* height: 1000px; */
+}
+
+#pie-chart {
+    /* background-image: url('/home/anurag/Documents/SIH/sentiment-analysis/web-app/tests/static/img/pie_chart.gif'); */
+    /* border: 1px solid black; */
+    width: 38%;
+    height: 400px;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    float: left;
+    margin: 10px;
+    margin-right: 20px;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    
+}
+
+#pie-chart:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: scale(1.02);
+}
+
+#day-wise {
+    /* background-image: url('/home/anurag/Documents/SIH/sentiment-analysis/web-app/tests/static/img/day_wise_graph.gif'); */
+    /* border: 1px solid aqua; */
+    border-radius: 8px;
+    width: 50%;
+    height: 410px;
+    flex-wrap: wrap;
+    margin: 10px;
+    margin-left: 20px;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+#day-wise:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: scale(1.02);
+}
+
+#six-months {
+    /* background-image: url('/home/anurag/Documents/SIH/sentiment-analysis/web-app/tests/static/img/six_months_graph.gif'); */
+    /* border: 1px solid firebrick; */
+    border-radius: 8px;
+    width: 512px;
+    height: 400px;
+    flex-wrap: wrap;
+    margin: 5px;
+    float: bottom;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+#six-months:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: scale(1.02);
+}
+
+#advanced-analytics {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    border: 2px solid rgb(26, 26, 26);
+}
+
