@@ -8,9 +8,10 @@
 
     <body>
         <div class="graphs">
-            <img src="{{ url_for('static', filename='img/pie_chart.gif') }}"        id="pie-chart" >
-            <img src="{{ url_for('static', filename='img/day_wise_graph.gif') }}"   id="day-wise"  >
-            <img src="{{ url_for('static', filename='img/six_months_graph.gif') }}" id="six-months">
+            <img src="{{ url_for('static', filename='img/pie_chart.gif') }}"           class="grph graph-1" id="pie-chart" >
+            <img src="{{ url_for('static', filename='img/day_wise_graph.gif') }}"      class="grph graph-2" id="day-wise"  >
+            <img src="{{ url_for('static', filename='img/six_months_graph.gif') }}"    class="grph graph-3" id="six-months">
+            <img src="{{ url_for('static', filename='img/top_employees_final.gif') }}" class="grph graph-4" id="top-emps"  >
         </div>
         <div id="advanced-analytics">Advanced Analytics</div>
     </body>

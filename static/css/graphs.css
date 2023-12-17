@@ -12,6 +12,8 @@ body {
     /* height: 1000px; */
 }
 
+
+
 #pie-chart {
     /* background-image: url('/home/anurag/Documents/SIH/sentiment-analysis/web-app/tests/static/img/pie_chart.gif'); */
     /* border: 1px solid black; */
@@ -64,6 +66,25 @@ body {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transform: scale(1.02);
 }
+
+
+#top-emps {
+    border-radius: 8px;
+    width: 512px;
+    height: 400px;
+    flex-wrap: wrap;
+    margin: 5px;
+    margin-left: 35px;
+    float: bottom;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+#top-emps:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: scale(1.02);
+}
+
+
 
 #advanced-analytics {
     width: 100px;

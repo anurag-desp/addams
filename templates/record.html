@@ -17,34 +17,10 @@
     <div class="container">
         <canvas id="analyser"></canvas>
         <p id="rec-btns">
-            <button id="init" class="btn btn-info" onclick="unpause()" onmouseover="changeColor('init')" onmouseout="changeColor('initIcon')"><img src="{{ url_for('static', filename='img/wave_sound.png') }}"/></button>
-            <button id="start" class="btn btn-success" onclick="startRecording()" onmouseover="changeColor('start')" onmouseout="changeColor('startIcon')" disabled><img src="{{ url_for('static', filename='img/speaking.png') }}"/></button>
-            <button id="stop" class="btn btn-danger" onclick="stopRecording()" onmouseover="changeColor('stop')" onmouseout="changeColor('stopIcon')" disabled><img src="{{ url_for('static', filename='img/stop_button.png') }}"/></button>
+            <button id="init" class="btn btn-info" onclick="unpause()">Start Listening</button>
+            <button id="start" class="btn btn-success" onclick="startRecording()" disabled>Start Conversation</button>
+            <button id="stop" class="btn btn-danger" onclick="stopRecording()" disabled>Stop Listening</button>
         </p>
-        <script>
-            function changeColor(btn) {
-                if (btn === 'init') {
-                    const initListening = document.getElementById('init');
-                    initListening.innerText = "Start Listening";
-                } else if (btn === 'start') {
-                    const startConversation = document.getElementById('start');
-                    startConversation.innerText = "Start Conversation";
-                } else if (btn === 'stop') {
-                    const stopConversation = document.getElementById('stop');
-                    stopConversation.innerHTML = "Stop Button";
-                } else if (btn === 'initIcon') {
-                    const initListening = document.getElementById('init');
-                    initListening.innerHTML = "<img src=\"{{ url_for('static', filename='img/wave_sound.png') }}\"/>";
-                } else if (btn === 'startIcon') {
-                    const startConversation = document.getElementById('start');
-                    startConversation.innerHTML = "<img src=\"{{ url_for('static', filename='img/speaking.png') }}\"/>";
-                } else {
-                    const stopConversation = document.getElementById('stop');
-                    stopConversation.innerHTML = "<img src=\"{{ url_for('static', filename='img/stop_button.png') }}\">";
-                }
-            }
-        </script>
-
     </div>
     
     

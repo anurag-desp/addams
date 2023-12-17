@@ -46,54 +46,36 @@ body {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     transition: transform 0.2s ease 0s;
 } 
-/* 
+
 .btn:hover {
     color: #161925;
     font-weight: bold;
     transform: scale(1.2);
 
-} */
+}
 
 
 
 #init {
-    /* background-color: #3185FC;*/
+    background-color: #3185FC;
     border-color: #004E89;
     width: fit-content;
     margin: auto;
 }
 
-#init:hover {
-    background-color: #3185FC;
-    color: #F7F7F2;
-    transform: scale(1.2);
-}
-
 
 #start {
-    /* background-color:#2ecc71; */
+    background-color:#2ecc71;
     border-color: #036016;
     width: fit-content;
     margin: auto;
 }
 
-#start:hover {
-    background-color:#2ecc71;
-    color: #F7F7F2;
-    transform: scale(1.2);
-}
-
 
 #stop {
-    /* background-color: #E71D36; */
+    background-color: #E71D36;
     border-color: #C1292E;
     margin: auto;
-}
-
-#stop:hover {
-    background-color: #E71D36;
-    color: #F7F7F2;
-    transform: scale(1.2);
 }
 
 

@@ -80,9 +80,7 @@ function stopRecording() {
     audioRecorder.stop();
     let startButton = document.getElementById('start')
     document.getElementById('stop').disabled = true;
-    startButton.removeAttribute('disabled');
-    startButton.setAttribute('onmouseout', "<img src=\"{{ url_for('static', filename='img/speaking.png') }}\"/>");
-    startButton.innerHTML = "<img src=\"{{ url_for('static', filename='img/stop_button.png') }}\">"
+    startButton.removeAttribute('disabled'); 
     startButton.style.backgroundColor = "#058E3F"
     audioRecorder.getBuffers(gotBuffers);
 }
@@ -95,7 +93,6 @@ function startRecording() {
     let startButton = document.getElementById('start')
     startButton.disabled = true;
     startButton.innerHTML = "Recording...";
-    startButton.removeAttribute('onmouseout');
     startButton.style.backgroundColor = "#45CB85"
     document.getElementById('stop').removeAttribute('disabled');
     audioRecorder.clear();
