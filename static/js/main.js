@@ -33,55 +33,62 @@ function gotBuffers(buffers) {
 
 function doneEncoding(soundBlob) {
     // fetch('/audio', {method: "POST", body: soundBlob}).then(response => $('#output').text(response.text()))
+    const loadingShit = document.getElementsByClassName('boxContainer')[0];
+    loadingShit.style.display = 'flex';
+    console.log(loadingShit)
+
     fetch('/audio', {method: "POST", body: soundBlob}).then(response => response.json().then(textSentiment => {
+        loadingShit.style.display = 'none';
         texts = textSentiment['text'];
         sentiments = textSentiment['sentiments'];
-        sentimentSummary = textSentiment['summary_sentiment'];
+        // sentimentSummary = textSentiment['summary_sentiment'];
 
         const analysisResult = document.getElementById('analysis-result')
-        analysisResult.style.display = 'block'; 
         analysisResult.innerHTML = '<tr>\
-                                    <th>Transcription</th>\
-                                    <th>Sentiment</th>\
+                                    <th style="padding: 3px;">Transcription</th>\
+                                    <th style="padding: 3px;">Sentiment</th>\
+                                    <th style="padding: 3px;">Confidence Score</th>\
                                     </tr>';
-        
+
+        analysisResult.style.display = 'block'; 
+        analysisResult.style.padding = '3px'; 
         for (let i = 0; i < texts.length; i++) {
             const tableRow = analysisResult.insertRow(i+1);
             const text = tableRow.insertCell(0);
             const sentiment = tableRow.insertCell(1);
+            const score = tableRow.insertCell(2);
 
-            text.innerText = texts[i]
+            text.innerText = texts[i];
+            text.style.padding = '3px';
             sentiment.innerText = sentiments[i][0];
+            sentiment.style.padding = '3px';
+            sentiment.style.fontWeight = 'bold';
+            sentiment.style.color = '#FFFFF2';
+            
+            score.innerText = (sentiments[i][1].toFixed(5))*100;
+            console.log(score.innerText)
+            console.log(sentiment)
+            score.style.padding = '3px';
+            score.style.fontWeight = 'bold';
+            score.style.color = '#F5F2B8';
         }
 
-        const summary = document.getElementById('sentiment-summary');
-        summary.style.display = 'block';
-        summary.innerText = sentimentSummary;
-
-        if (sentimentSummary === 'very positive') {
-            summary.style.color = '#00CC99';
-        } else if (sentimentSummary === 'positive') {
-            summary.style.color = '#00F0B5';
-        } else if (sentimentSummary === 'neutral') {
-            summary.style.color = '#F58A07';
-        } else if (sentimentSummary === 'negative') {
-            summary.style.color = '#F61067';
-        } else {
-            summary.style.color = '#EC0B43';
-        }
-        summary.style.fontSize = 'x-large';
-        summary.style.fontWeight = 'bold';
     }));
+    var img = document.createElement("img");
+    img.src = "{{ url_for('static', filename='img/sns_pie_chart.svg') }}";
+    var src = document.getElementById("pie-chart");
+    src.appendChild(img);
     recIndex++;
 }
 
 function stopRecording() {
     // stop recording
     audioRecorder.stop();
-    let startButton = document.getElementById('start')
+    let startButton = document.getElementById('start');
     document.getElementById('stop').disabled = true;
     startButton.removeAttribute('disabled'); 
-    startButton.style.backgroundColor = "#058E3F"
+    startButton.style.backgroundColor = "#058E3F";
+    startButton.innerHTML = "Start Recording";
     audioRecorder.getBuffers(gotBuffers);
 }
 

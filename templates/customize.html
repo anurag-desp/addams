@@ -1,0 +1,14 @@
+{% include 'navbar.html' %}
+<head>
+    <link rel="stylesheet" href="css/customize.css"/>
+</head>
+
+<textarea name="prompt" id="prompt" cols="30" rows="10"></textarea>
+<input type="file" 
+       class="filepond"
+       name="filepond"
+       multiple
+       data-max-file-size="3MB"
+       data-max-files="3" />
+
+<script src="{{ url_for('static', filename='js/customize.js') }}"></script>

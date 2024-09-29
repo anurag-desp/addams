@@ -3,7 +3,10 @@ from pydub import AudioSegment
 import math
 import os
 from natsort import natsorted
-
+import seaborn as sns
+import matplotlib
+import matplotlib.pyplot as plt
+from collections import Counter
 
 def get_duration(audio):
     return audio.duration_seconds
@@ -55,113 +58,125 @@ def filter_sentiments(sentiments):
     
     return filtered_sentiments
 
-def get_sentiments_summary(sentiments):
-    if len(sentiments[0]) == 2:
-        sentiments = filter_sentiments(sentiments=sentiments)
-    text_sentiments = [
-    "love",
-    "joy",
-    "gratitude",
-    "caring",
-    "admiration",
-    "pride",
-    "excitement",
-    "curiosity",
-    "amusement",
-    "optimism",
-    "surprise",
-    "desire",
-    "realization",
-    "approval",
-    "relief",
-    "neutral",
-    "confusion",
-    "anger",
-    "fear",
-    "disgust",
-    "remorse",
-    "grief",
-    "annoyance",
-    "nervousness",
-    "embarrassment ",
-    "disappointment",
-    "disapproval",
-    "sadness"
-    ]
+
+def save_pie_chart(sentiments, count):
+    matplotlib.use('SVG')
+    plt.pie(count, labels=sentiments)
+    plt.savefig('/home/anurag/Documents/SIH/sentiment-analysis/web-app/tests/static/img/sns_pie_chart.svg')
+
+
+def get_sentiments_count(sentiments):
+    sentiment_count = Counter(sentiments)
+    return sentiment_count
+
+
+# def get_sentiments_summary(sentiments):
+#     if len(sentiments[0]) == 2:
+#         sentiments = filter_sentiments(sentiments=sentiments)
+#     text_sentiments = [
+#     "love",
+#     "joy",
+#     "gratitude",
+#     "caring",
+#     "admiration",
+#     "pride",
+#     "excitement",
+#     "curiosity",
+#     "amusement",
+#     "optimism",
+#     "surprise",
+#     "desire",
+#     "realization",
+#     "approval",
+#     "relief",
+#     "neutral",
+#     "confusion",
+#     "anger",
+#     "fear",
+#     "disgust",
+#     "remorse",
+#     "grief",
+#     "annoyance",
+#     "nervousness",
+#     "embarrassment ",
+#     "disappointment",
+#     "disapproval",
+#     "sadness"
+#     ]
         
-    very_positive_sentiments = [
-        "love",
-        "joy",
-        "gratitude",
-        "caring",
-        "admiration",
-        "pride",
-        "excitement",
-        "curiosity",
-        "amusement",
-        "optimism",
-        "surprise",
-    ]
+#     very_positive_sentiments = [
+#         "love",
+#         "joy",
+#         "gratitude",
+#         "caring",
+#         "admiration",
+#         "pride",
+#         "excitement",
+#         "curiosity",
+#         "amusement",
+#         "optimism",
+#         "surprise",
+#     ]
 
-    positive_sentiments = [
-        "desire",
-        "realization",
-        "approval",
-        "relief",
-    ]
+#     positive_sentiments = [
+#         "desire",
+#         "realization",
+#         "approval",
+#         "relief",
+#     ]
 
-    neutral_sentiments = [
-        "neutral",
-    ]
+#     neutral_sentiments = [
+#         "neutral",
+#     ]
 
-    negative_sentiments = [
-        "confusion",
-        "anger",
-        "fear",
-        "disgust",
-    ]
+#     negative_sentiments = [
+#         "confusion",
+#         "anger",
+#         "fear",
+#         "disgust",
+#     ]
 
-    very_negative_sentiments = [
-        "remorse",
-        "grief",
-        "annoyance",
-        "nervousness",
-        "embarrassment ",
-        "disappointment",
-        "disapproval",
-        "sadness"
-    ]
+#     very_negative_sentiments = [
+#         "remorse",
+#         "grief",
+#         "annoyance",
+#         "nervousness",
+#         "embarrassment ",
+#         "disappointment",
+#         "disapproval",
+#         "sadness"
+#     ]
 
-    very_positive_score = 0
-    positive_score = 0
-    neutral_score = 0
-    negative_score = 0
-    very_negative_score = 0
+#     very_positive_score = 0
+#     positive_score = 0
+#     neutral_score = 0
+#     negative_score = 0
+#     very_negative_score = 0
 
-    for i in sentiments:
-        if i in very_positive_sentiments:
-            very_negative_score += 5
-        elif i in positive_sentiments:
-            positive_score += 2
-        elif i in neutral_sentiments:
-            neutral_score += 1
-        elif i in negative_sentiments:
-            negative_score -= 2
-        else:
-            very_negative_score -= 5
+#     for i in sentiments:
+#         if i in very_positive_sentiments:
+#             very_negative_score += 5
+#         elif i in positive_sentiments:
+#             positive_score += 2
+#         elif i in neutral_sentiments:
+#             neutral_score += 1
+#         elif i in negative_sentiments:
+#             negative_score -= 2
+#         else:
+#             very_negative_score -= 5
 
     
-    total_score = very_positive_score + positive_score + negative_score + negative_score + very_negative_score
-    if total_score >=5 :
-        summary_sentiment = 'very positive'
-    elif total_score >= 2 and total_score <= 4:
-        summary_sentiment = 'positive'
-    elif total_score <= 1 and total_score > -2:
-        summary_sentiment = 'neutral'
-    elif total_score >= -2 and total_score <= -4:
-        summary_sentiment = 'negative'
-    else:
-        summary_sentiment = 'very negative'
+#     total_score = very_positive_score + positive_score + negative_score + negative_score + very_negative_score
+#     if total_score >=5 :
+#         summary_sentiment = 'satisfied'
+#     elif total_score >= 2 and total_score <= 4:
+#         summary_sentiment = 'positive'
+#     elif total_score <= 1 and total_score > -2:
+#         summary_sentiment = 'neutral'
+#     elif total_score >= -2 and total_score <= -4:
+#         summary_sentiment = 'negative'
+#     else:
+#         summary_sentiment = 'unpleasant'
     
 
-    return summary_sentiment
+#     return summary_sentiment

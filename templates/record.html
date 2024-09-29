@@ -1,4 +1,5 @@
 {% extends "record_layout.html" %}
+
 {% block body %}
 
 
@@ -13,6 +14,11 @@
     <script src="{{ url_for('static', filename='js/recorder.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/audiodisplay.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+
+    <div id="empty-space"></div>
+    {% include 'navbar.html' %}
+
+    <h2 id="head-test">Test Your Model</h2>
     
     <div class="container">
         <canvas id="analyser"></canvas>
@@ -22,16 +28,23 @@
             <button id="stop" class="btn btn-danger" onclick="stopRecording()" disabled>Stop Listening</button>
         </p>
     </div>
-    
+
+    <div class="boxContainer">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+        <div class="box box5"></div>
+    </div>
     
     <table class="sentiment-analysis" id="analysis-result">
-        <!-- <tr>
-            <th>Transcription</th>
-            <th>Sentiment</th>
-        </tr> -->
     </table>
+ 
+    <div id="pie-chart">
+    </div> 
 
-    <div id="sentiment-summary">
-    </div>
+    <div id="plutchik">
+        <img src="{{ url_for('static', filename='img/plutchik-wheel-of-emotions.png') }}" id="plutchik-image">
+    </div> 
     <!-- <script src="{{ url_for('static', filename='js/classify.js') }}"></script> -->
 {% endblock %}

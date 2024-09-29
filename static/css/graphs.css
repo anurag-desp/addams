@@ -7,8 +7,7 @@ body {
     /* border: 3px solid red; */
     display: flex;
     flex-wrap: wrap;
-    height: 1000px;
-
+    height: 900px;
     /* height: 1000px; */
 }
 
@@ -22,7 +21,7 @@ body {
     border-radius: 8px;
     flex-wrap: wrap;
     float: left;
-    margin: 10px;
+    margin-left: 25px;
     margin-right: 20px;
     box-shadow: 0 0 11px rgba(33,33,33,.2); 
     
@@ -58,6 +57,8 @@ body {
     height: 400px;
     flex-wrap: wrap;
     margin: 5px;
+    margin-left: 25px;
+    margin-bottom: 2px;
     float: bottom;
     box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
@@ -74,7 +75,8 @@ body {
     height: 400px;
     flex-wrap: wrap;
     margin: 5px;
-    margin-left: 35px;
+    margin-left: 40px;
+    margin-bottom: 2px;
     float: bottom;
     box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
@@ -87,9 +89,20 @@ body {
 
 
 #advanced-analytics {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 30px;
     border-radius: 5px;
-    border: 2px solid rgb(26, 26, 26);
+    float: right;
+    margin-right: 15px;
+    margin-top: 400px;
+    margin-left: 80px;
+    border: 2px solid #D7FDEC;
+    color: #FF3C38;
 }
 
+#advanced-analytics:hover {
+    background-color: #FF3C38;
+    font-weight: bold;
+    color: wheat;
+    transform: scale(1.05);
+}

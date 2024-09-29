@@ -1,49 +1,56 @@
 from hugchat import hugchat
 from hugchat.login import Login
 from gtts import gTTS
-# from io import BytesIO
+from pydub import AudioSegment
 import os
-import playsound
 
-def signInAndChatHug(user: str, passwd: str, query: str) -> str:
-    cookie_path_dir = "./cookies_snapshot"
-    # if already logged in: loadCookiesFromDir else: get Cookies and save to Dir
-    sign = Login(user, passwd)
-    try:
-        cookies = sign.loadCookiesFromDir(cookie_path_dir)
-    except:
-        cookies = sign.login()
-        sign.saveCookiesToDir(cookie_path_dir)
 
-    # create chatbot
-    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+class CallBot:
+
+    def __init__(self) -> None:
+        self.user = "hugnatester"
+        self.passwd = "hugonthefaceP3N"
+        self.cookie_dir_path = './cookies_snapshot'
+
+        self.sign = Login(self.user, self.passwd)
+        try:
+            self.cookies = self.sign.loadCookiesFromDir(self.cookie_dir_path)
+        except:
+            self.cookies = self.sign.login()
+            self.sign.saveCookiesToDir(self.cookie_dir_path)
+        
+        self.chatbot = hugchat.ChatBot(cookies=self.cookies.get_dict())
+
+        id = self.chatbot.new_conversation()
+        self.chatbot.change_conversation(id)
+
+        self.chatbot.switch_llm(1)
+
+    def chat(self, query: str) -> str:
+        result = self.chatbot.query(query, stream=False)
+        result = str(result)
+        return result
     
-    # new conversation (for switching)
-    id = chatbot.new_conversation()
-    chatbot.change_conversation(id)
+    def chatInfo(self) -> str:
+        self.info = self.chatbot.get_conversation_info()
+        return {
+            "chat_id": self.info.id,
+            "chat_title": self.info.title,
+            "model": self.info.model,
+            "system_prompt": self.info.system_prompt,
+            "history": self.info.history,
+            }
+    
+    def delChat(self):
+        print("Chat deleted\n")
+        self.chatbot.delete_all_conversations()
 
-    # switch models
-    chatbot.switch_llm(1)
-
-    # send query + retrieve result
-    result = chatbot.query(query, stream=True)
-    result = str(result)
-
-    chatbot.delete_all_conversations()
-    return result
-
-def speakResult(text: str):
+def save_response_audio(text: str):
     tts = gTTS(text=text, lang='en')
 
-    au_filename = "out.mp3"
+    au_filename = "/home/anurag/Documents/SIH/sentiment-analysis/web-app/tests/output/call_bot_response.mp3"
     tts.save(au_filename)
-    playsound.playsound(au_filename)
-    os.remove('./' + au_filename)
 
-query = input()
-result = signInAndChatHug(user="hugnatester", passwd="hugonthefaceP3N", query=query)
-speakResult(result)
-
-
-
-
+    sound = AudioSegment.from_mp3(au_filename)
+    sound.export("/home/anurag/Documents/SIH/sentiment-analysis/web-app/tests/output/call_bot_response.wav", format="wav")
+    os.remove(au_filename)

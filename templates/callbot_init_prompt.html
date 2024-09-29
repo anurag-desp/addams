@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/callbot_init.css') }}">
+  </head>
+
+  <body>
+    {% include 'navbar.html' %}
+    <div id="prompt-area">
+      <textarea name="prompt" id="prompt" cols="30" rows="10" autocapitalize="on" autocomplete="on" autofocus></textarea>
+      <button class="button-63" role="button" onclick="sendInitPrompt()">Submit</button>
+      <div class="boxContainer">
+          <div class="box box1"></div>
+          <div class="box box2"></div>
+          <div class="box box3"></div>
+          <div class="box box4"></div>
+          <div class="box box5"></div>
+      </div>
+    </div>
+
+    <script>
+      function sendInitPrompt() {
+        const prompt = document.getElementById('prompt')
+        console.log(prompt.value)
+        
+        const loadingShit = document.getElementsByClassName('boxContainer')[0];
+        loadingShit.style.display = 'flex';
+        console.log(loadingShit)
+
+        
+        fetch('http://127.0.0.1:8989/init_prompt', {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'POST',
+          body: JSON.stringify({
+            'init_prompt': prompt.value,
+          }),
+        })
+        .then(response => response.json())
+        .then(data => {
+          const chatID = data['chat_id']
+          console.log(typeof chatID)
+          loadingShit.style.display = 'none';
+          const userURL = "{{ url_for('converse_with_call_bot', chat_id=chatID) }}"
+          console.log(userURL.concat(chatID));
+
+          const newURL = userURL.concat(chatID);
+          window.location.replace(newURL);
+        })
+      }
+
+
+    </script>
+  </body>
+</html>
